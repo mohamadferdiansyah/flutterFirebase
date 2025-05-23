@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/services/firebase.dart';
+import 'package:todo_app/views/detail_todo.dart';
 
 class TodoListPage extends StatefulWidget {
   const TodoListPage({super.key});
@@ -188,6 +189,19 @@ class _TodoListPageState extends State<TodoListPage> {
 
                   return Card(
                     child: ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => DetailTodo(
+                                  todoId: todoId,
+                                  todoTitle: title,
+                                  todoDescription: description,
+                                ),
+                          ),
+                        );
+                      },
                       title: Text(
                         title,
                         style: const TextStyle(
